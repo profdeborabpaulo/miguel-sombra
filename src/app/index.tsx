@@ -8,27 +8,26 @@ export default function HomeScreen( ) {
     "Estudar React-Native",
     "Aprender useState",
     "Criar a primeira tela" 
-  ]);
-  function adicionarTarefa() {
-    if(!tarefa.trim())//impede tarefas em branco
-      return;
-      setTarefas([...tarefas, tarefa]);
-      setTarefa('');
-    
-  }
-  //próxima   return(
+  ]);                            
+  return(
     <View style={styles.container }>
-
       <Text style={styles.title}> Gerenciador de Tarefas </Text>
-      
       <TextInput style={styles.input}
       placeholder='Digite uma tarefa'
+      value={tarefa}
+      onChangeText={setTarefa}
       />
-    
+      {tarefas.map((item, index)=>(
+        <Text
+          key={index}
+          style={styles.item}
+        >
+          .{item}
+        </Text>
+      ))}
     </View>
   );
-}
-
+};
 //Configurando o estilo do index.tsx
 const styles=StyleSheet.create({
   container:{
@@ -46,5 +45,8 @@ const styles=StyleSheet.create({
     borderRadius: 8,
     padding: 12,
   },
-
+  item:{
+    fontSize: 16,
+    marginTop: 10,
+  }
 });
